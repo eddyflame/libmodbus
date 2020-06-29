@@ -1,7 +1,7 @@
 /*
  * Copyright © 2001-2013 Stéphane Raimbault <stephane.raimbault@gmail.com>
  *
- * SPDX-License-Identifier: LGPL-2.1+
+ * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
 #ifndef MODBUS_H
@@ -208,7 +208,7 @@ MODBUS_API int modbus_read_input_bits(modbus_t *ctx, int addr, int nb, uint8_t *
 MODBUS_API int modbus_read_registers(modbus_t *ctx, int addr, int nb, uint16_t *dest);
 MODBUS_API int modbus_read_input_registers(modbus_t *ctx, int addr, int nb, uint16_t *dest);
 MODBUS_API int modbus_write_bit(modbus_t *ctx, int coil_addr, int status);
-MODBUS_API int modbus_write_register(modbus_t *ctx, int reg_addr, int value);
+MODBUS_API int modbus_write_register(modbus_t *ctx, int reg_addr, const uint16_t value);
 MODBUS_API int modbus_write_bits(modbus_t *ctx, int addr, int nb, const uint8_t *data);
 MODBUS_API int modbus_write_registers(modbus_t *ctx, int addr, int nb, const uint16_t *data);
 MODBUS_API int modbus_mask_write_register(modbus_t *ctx, int addr, uint16_t and_mask, uint16_t or_mask);
@@ -227,7 +227,7 @@ MODBUS_API modbus_mapping_t* modbus_mapping_new(int nb_bits, int nb_input_bits,
                                                 int nb_registers, int nb_input_registers);
 MODBUS_API void modbus_mapping_free(modbus_mapping_t *mb_mapping);
 
-MODBUS_API int modbus_send_raw_request(modbus_t *ctx, uint8_t *raw_req, int raw_req_length);
+MODBUS_API int modbus_send_raw_request(modbus_t *ctx, const uint8_t *raw_req, int raw_req_length);
 
 MODBUS_API int modbus_receive(modbus_t *ctx, uint8_t *req);
 
